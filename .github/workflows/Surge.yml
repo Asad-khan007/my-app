@@ -41,6 +41,12 @@ jobs:
       - name: Creating Build
         run: yarn build
 
+      - name: System tests BioDynaMo
+        shell: bash
+        working-directory: build
+        run: |
+         set -x
+
       - name: Installing Surge
         run: npm install --global surge
 
