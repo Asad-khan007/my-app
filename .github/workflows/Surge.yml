@@ -32,11 +32,11 @@ jobs:
      
    
       - name: Creating Build
-         run: npm run build
+        run: npm run build
 
-     - name: Installing Surge
+      - name: Installing Surge
         run: npm install --global surge
 
-     - name: Deploying to surge
+      - name: Deploying to surge
         run: surge ./build http://adamkhancharsi.surge.sh  token ${{secrets.SECRATE_SURGE}}
      
