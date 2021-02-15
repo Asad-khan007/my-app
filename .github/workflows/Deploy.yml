@@ -7,8 +7,6 @@ on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -29,14 +27,20 @@ jobs:
         uses: actions/setup-node@v2.1.4
         with:
          node-version: 12
+      
+      - uses: Borales/actions-yarn@v2.3.0
+        with:
+          # Yarn command
+         cmd: install  # will run 'yarn istall' command
 
-      - name: Creating Build 
-        run: npm run build
+      - name: Creating React Build
+        run: yarn build 
+      
 
       - name: Installing Surge
         run: npm install --global surge
 
       - name: Deploying To Surge
-        run: surge ./build http://adamkhancharsi.surge.sh/ --toke ${{secrets.SECRATE_SURGE}} 
+        run: surge ./build http://adamkhancharsi.surge.sh --toke ${{secrets.SECRATE_SURGE}} 
  
      
